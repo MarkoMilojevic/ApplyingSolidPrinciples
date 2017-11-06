@@ -1,4 +1,4 @@
-﻿using System.Net.Mail;
+﻿using System.ComponentModel.DataAnnotations;
 
 namespace EmailValidation
 {
@@ -11,15 +11,7 @@ namespace EmailValidation
 
         private bool IsFormatValid(string email)
         {
-            try
-            {
-                new MailAddress(email);
-                return true;
-            }
-            catch
-            {
-                return false;
-            }
+            return new EmailAddressAttribute().IsValid(email);
         }
     }
 }
