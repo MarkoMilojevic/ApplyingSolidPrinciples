@@ -3,7 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.27004.2006
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EmailValidation", "EmailValidation\EmailValidation.csproj", "{17757F05-81CB-45D2-BADD-96CD7588FB12}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EmailValidation", "EmailValidation\EmailValidation.csproj", "{111364FC-E446-44AA-A1D2-9E25A7699000}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EmailValidation.UnitTests", "EmailValidation.UnitTests\EmailValidation.UnitTests.csproj", "{2E3DF5C2-8A38-4A03-86D7-8D463C917E47}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -11,10 +13,14 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{17757F05-81CB-45D2-BADD-96CD7588FB12}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{17757F05-81CB-45D2-BADD-96CD7588FB12}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{17757F05-81CB-45D2-BADD-96CD7588FB12}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{17757F05-81CB-45D2-BADD-96CD7588FB12}.Release|Any CPU.Build.0 = Release|Any CPU
+		{111364FC-E446-44AA-A1D2-9E25A7699000}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{111364FC-E446-44AA-A1D2-9E25A7699000}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{111364FC-E446-44AA-A1D2-9E25A7699000}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{111364FC-E446-44AA-A1D2-9E25A7699000}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2E3DF5C2-8A38-4A03-86D7-8D463C917E47}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2E3DF5C2-8A38-4A03-86D7-8D463C917E47}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2E3DF5C2-8A38-4A03-86D7-8D463C917E47}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2E3DF5C2-8A38-4A03-86D7-8D463C917E47}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
