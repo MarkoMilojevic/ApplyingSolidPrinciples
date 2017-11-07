@@ -17,34 +17,35 @@ namespace EmailValidation
 
         public List<string> ValidatedEmails { get; } = new List<string>();
 
-        public EmailValidator()
+        internal EmailValidator()
         {
         }
 
-        public EmailValidator(IEnumerable<string> blacklistedEmails)
+        internal EmailValidator(IEnumerable<string> blacklistedEmails)
         {
             _blacklistedEmails = blacklistedEmails ?? throw new ArgumentNullException(nameof(blacklistedEmails));
             _checkIsEmailBlacklisted = true;
         }
 
-        public EmailValidator(bool checkDuplicates)
+        internal EmailValidator(bool checkDuplicates)
         {
             _checkDuplicates = checkDuplicates;
         }
 
-        public EmailValidator(IEnumerable<string> blacklistedEmails, bool checkDuplicates)
+        internal EmailValidator(IEnumerable<string> blacklistedEmails, bool checkDuplicates)
                 : this(blacklistedEmails)
         {
             _checkDuplicates = checkDuplicates;
         }
-        
-        public EmailValidator(IEnumerable<string> blacklistedEmails, IEnumerable<string> allowedDomains)
+
+        internal EmailValidator(IEnumerable<string> blacklistedEmails, IEnumerable<string> allowedDomains)
                 : this(blacklistedEmails)
         {
             _allowedDomains = allowedDomains;
             _checkIsDomainAllowed = true;
         }
-        public EmailValidator(IEnumerable<string> blacklistedEmails, IEnumerable<string> allowedDomains, bool checkDuplicates)
+
+        internal EmailValidator(IEnumerable<string> blacklistedEmails, IEnumerable<string> allowedDomains, bool checkDuplicates)
                 : this(blacklistedEmails, allowedDomains)
         {
             _checkDuplicates = checkDuplicates;

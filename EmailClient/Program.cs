@@ -1,9 +1,5 @@
-﻿using EmailValidation;
+﻿using EmailValidation.Builders;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace EmailClient
 {
@@ -12,7 +8,7 @@ namespace EmailClient
         public static void Main(string[] args)
         {
             var email = "user@test.com";
-            var validator = new EmailValidator();
+            var validator = new EmailValidatorBuilder().Build();
 
             var result = validator.IsValid(email) ? "Valid" : "Invalid";
 
