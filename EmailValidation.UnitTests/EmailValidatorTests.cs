@@ -50,5 +50,35 @@ namespace EmailValidation.UnitTests
         {
             Assert.False(new EmailValidator(new string[] { }, allowedDomains).IsValid(email));
         }
+
+        [Theory]
+        [InlineData(new object[] { new string[] { "test@gmail.com", "test123@outlook.com", "test.test123@nultien.onmicrosoft.com" } })]
+        public void Should_ReturnTrue_When_NoDuplicates(string[] emails)
+        {
+            var validator = new EmailValidator(true);
+            var noDuplicates = true;
+
+            foreach (var email in emails)
+            {
+                noDuplicates &= validator.IsValid(email);
+            }
+
+            Assert.True(noDuplicates);
+        }
+
+        [Theory]
+        [InlineData(new object[] { new string[] { "test@gmail.com", "test123@outlook.com", "test@gmail.com", "test.test123@nultien.onmicrosoft.com" } })]
+        public void Should_ReturnFalse_When_Duplicates(string[] emails)
+        {
+            var validator = new EmailValidator(true);
+            var noDuplicates = true;
+
+            foreach (var email in emails)
+            {
+                noDuplicates &= validator.IsValid(email);
+            }
+
+            Assert.False(noDuplicates);
+        }
     }
 }

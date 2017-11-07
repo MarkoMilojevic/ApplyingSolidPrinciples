@@ -13,6 +13,10 @@ namespace EmailValidation
         private readonly IEnumerable<string> _allowedDomains = Enumerable.Empty<string>();
         private readonly bool _checkIsDomainAllowed = false;
 
+        private readonly bool _checkDuplicates;
+
+        public List<string> ValidatedEmails { get; } = new List<string>();
+
         public EmailValidator()
         {
         }
@@ -23,11 +27,27 @@ namespace EmailValidation
             _checkIsEmailBlacklisted = true;
         }
 
+        public EmailValidator(bool checkDuplicates)
+        {
+            _checkDuplicates = checkDuplicates;
+        }
+
+        public EmailValidator(IEnumerable<string> blacklistedEmails, bool checkDuplicates)
+                : this(blacklistedEmails)
+        {
+            _checkDuplicates = checkDuplicates;
+        }
+        
         public EmailValidator(IEnumerable<string> blacklistedEmails, IEnumerable<string> allowedDomains)
                 : this(blacklistedEmails)
         {
             _allowedDomains = allowedDomains;
             _checkIsDomainAllowed = true;
+        }
+        public EmailValidator(IEnumerable<string> blacklistedEmails, IEnumerable<string> allowedDomains, bool checkDuplicates)
+                : this(blacklistedEmails, allowedDomains)
+        {
+            _checkDuplicates = checkDuplicates;
         }
 
         public bool IsValid(string email)
@@ -46,6 +66,13 @@ namespace EmailValidation
             {
                 return false;
             }
+
+            if (_checkDuplicates && ValidatedEmails.Contains(email))
+            {
+                return false;
+            }
+
+            ValidatedEmails.Add(email);
 
             return true;
         }
