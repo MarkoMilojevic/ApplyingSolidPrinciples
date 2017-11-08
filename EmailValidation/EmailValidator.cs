@@ -7,47 +7,24 @@ namespace EmailValidation
 {
     public class EmailValidator
     {
-        private readonly IEnumerable<string> _blacklistedEmails = Enumerable.Empty<string>();
-        private readonly bool _checkIsEmailBlacklisted = false;
+        private readonly IEnumerable<string> _blacklistedEmails;
+        private readonly bool _checkIsEmailBlacklisted;
 
-        private readonly IEnumerable<string> _allowedDomains = Enumerable.Empty<string>();
-        private readonly bool _checkIsDomainAllowed = false;
+        private readonly IEnumerable<string> _allowedDomains;
+        private readonly bool _checkIsDomainAllowed;
 
         private readonly bool _checkDuplicates;
 
         public List<string> ValidatedEmails { get; } = new List<string>();
 
-        internal EmailValidator()
-        {
-        }
-
-        internal EmailValidator(IEnumerable<string> blacklistedEmails)
-        {
-            _blacklistedEmails = blacklistedEmails ?? throw new ArgumentNullException(nameof(blacklistedEmails));
-            _checkIsEmailBlacklisted = true;
-        }
-
-        internal EmailValidator(bool checkDuplicates)
-        {
-            _checkDuplicates = checkDuplicates;
-        }
-
-        internal EmailValidator(IEnumerable<string> blacklistedEmails, bool checkDuplicates)
-                : this(blacklistedEmails)
-        {
-            _checkDuplicates = checkDuplicates;
-        }
-
-        internal EmailValidator(IEnumerable<string> blacklistedEmails, IEnumerable<string> allowedDomains)
-                : this(blacklistedEmails)
-        {
-            _allowedDomains = allowedDomains;
-            _checkIsDomainAllowed = true;
-        }
-
         internal EmailValidator(IEnumerable<string> blacklistedEmails, IEnumerable<string> allowedDomains, bool checkDuplicates)
-                : this(blacklistedEmails, allowedDomains)
         {
+            _blacklistedEmails = blacklistedEmails;
+            _checkIsEmailBlacklisted = _blacklistedEmails != null ? true : false;
+
+            _allowedDomains = allowedDomains;
+            _checkIsDomainAllowed = _allowedDomains != null ? true : false;
+
             _checkDuplicates = checkDuplicates;
         }
 
